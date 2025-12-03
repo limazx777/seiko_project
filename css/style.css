@@ -1,0 +1,1340 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap');
+
+@font-face {
+    font-family: 'Japan Rich';
+    /* Certifique-se de que os arquivos da fonte estão na pasta /fonts/ */
+    src: url('../fonts/japan_rich/JapanRich-Regular.woff2') format('woff2'),
+         url('../fonts/japan_rich/JapanRich-Regular.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;    font-display: swap; /* Otimização de fonte */
+}
+/* A fonte 'Osake' será usada para o logo, mas não precisa de um @font-face separado se for a mesma que 'Japan Rich' */
+/* Estilos Gerais */
+:root {
+    --primary-color: #c8102e; /* Vermelho chinês tradicional */
+    --secondary-color: #c8102e;
+    --accent-color: #000000; /* Preto */
+    --text-color: #eee; /* Alterado para texto claro */
+    --light-color: #fff;
+    --bg-color: #000000; /* Fundo principal agora é preto */
+    --border-color: #444; /* Borda mais escura para contraste */
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 45px; /* Ajuste este valor para aumentar ou diminuir o logo */
+  height: auto;
+  margin-right: 10px;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Okashi', 'Zen Old Mincho', 'Noto Sans SC', sans-serif; /* Fonte principal do site */
+    color: var(--text-color); /* Cor do texto agora é clara */
+    background-color: var(--bg-color);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    font-family: 'Japan Rich', sans-serif; /* Aplica a fonte Japan Rich ao título da seção */
+    color: var(--light-color); /* Título agora é branco */
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: var(--secondary-color);
+    margin: 10px auto;
+}
+
+/* Header */
+header {
+    background: #000000; /* Fundo do cabeçalho agora é preto */
+    /* Imagem de fundo removida */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Sombra ajustada */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    color: var(--light-color);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.logo h1 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    font-family: 'Japan Rich', sans-serif; /* Usando a fonte carregada para o logo */
+} 
+
+.logo span {
+    font-size: 1.2rem;
+    margin-left: 10px;
+    color: var(--light-color);
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    font-family: 'Japan Rich', sans-serif; /* Aplica a fonte Japan Rich aos links de navegação */
+    font-weight: 500;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--secondary-color);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.mobile-menu {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1100; /* Para ficar acima do menu overlay */
+    transition: transform 0.3s ease;
+}
+
+.cart-icon {
+    position: relative;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.cart-icon .fa-shopping-cart {
+    font-size: 1.5rem;
+}
+
+.cart-counter {
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.mobile-menu.active .fa-bars {
+    display: none;
+}
+
+.mobile-menu .fa-times {
+    display: none;
+}
+
+.mobile-menu.active .fa-times {
+    display: block;
+}
+
+/* Hero Section */
+.hero {
+    background: #000000; /* Fundo preto somente para a seção hero */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    color: var(--light-color); 
+    margin-top: 70px;
+    overflow: hidden;
+}
+
+.hero-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/fundo_princ.png'); /* Substitua pelo nome da sua imagem */
+    background-size: cover;
+    opacity: 1; /* Ajuste a opacidade conforme necessário */
+    z-index: 0;
+    animation: floatAnimation 5s ease-in-out infinite; /* Duração reduzida para 6 segundos */
+}
+
+.hero-image-overlay-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/lua.png'); /* Imagem que ficará por cima */
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    z-index: 0;
+    animation: floatAnimationTop 5s ease-in-out infinite;
+}
+
+.hero-image-overlay-topmost {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/mont2.png'); /* << ADICIONE SUA NOVA IMAGEM AQUI */
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    z-index: 0;
+    animation: floatAnimationTopmost 0s ease-in-out infinite;
+}
+
+.hero-image-overlay-fourth {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/arvore.png'); /* << ADICIONE SUA NOVA IMAGEM AQUI */
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    z-index: 0;
+    animation: floatAnimationFourth 0s ease-in-out infinite;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+.hero-content {
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto;
+    position: relative; /* Garante que o conteúdo fique acima do overlay */
+    z-index: 1;
+}
+
+.main-content {
+    padding-top: 100px; /* Ajuste para o header fixo */
+}
+.main-content .menu-section {
+    padding-top: 40px;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0; 
+    width: 100%;
+    height: 100px; /* Altura do degradê */
+    background: linear-gradient(to top, var(--bg-color) 5%, transparent);
+    z-index: 5; /* Garante que o degradê fique sobre o conteúdo do hero */
+    pointer-events: none; /* Permite cliques através do degradê */
+}
+
+.hero-content h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Menu Section */
+.menu-section {
+    padding: 80px 0;
+    background-color: var(--bg-color); /* Fundo da seção de menu agora é preto */
+    position: relative; overflow: hidden;
+}
+
+.menu-carousel-wrapper {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.menu-categories {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    scroll-behavior: smooth;
+    padding: 10px 0;
+}
+
+.menu-categories::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(50, 50, 50, 0.8); /* Fundo do botão mais escuro */
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    display: none; /* Escondido por padrão, JS irá mostrar */
+}
+
+.carousel-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border-color: var(--primary-color);
+}
+
+.carousel-btn.prev {
+    left: -15px;
+}
+
+.carousel-btn.next {
+    right: -15px;
+}
+
+.category {
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.category.active, .category:hover {
+    border-bottom: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.menu-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.menu-category {
+    display: none;
+}
+
+.menu-category.active {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    width: 100%;
+}
+
+.menu-item {
+    background-color: #2a2a2a; /* Unificando a cor de fundo dos itens */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1); /* Sombra/brilho mais sutil */
+    transition: transform 0.3s ease;
+    /* Otimização de performance para o hover */
+    will-change: transform;
+}
+
+.menu-item:hover {
+    transform: translateY(-10px);
+}
+
+.item-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.menu-item:hover .item-image img {
+    transform: scale(1.1);
+}
+
+.item-info {
+    padding: 20px;
+}
+
+.item-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.item-info p {
+    color: #ccc; /* Cor da descrição do item ajustada para melhor leitura */
+    font-size: 0.9rem;
+}
+
+.price {
+    display: block;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+.menu-full-btn {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.item-options {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.item-options label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: #aaa; /* Cor do texto da label ajustada */
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.flavor-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    padding: 10px 35px 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-family: inherit;
+    background-color: #222; /* Fundo do select mais escuro */
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.select-wrapper::after {
+    content: '\f078'; /* Ícone de seta para baixo do Font Awesome */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+    pointer-events: none; /* Permite clicar no select através do ícone */
+}
+
+.item-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.add-to-cart-btn {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border: none;
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.add-to-cart-btn.confirmed {
+    background-color: var(--accent-color);
+    transform: translateY(0); /* Reseta o hover effect */
+}
+
+.add-to-cart-btn .fa-check {
+    margin-right: 5px;
+    font-size: 0.8rem;
+}
+
+/* Estilos do Carrinho Modal */
+.cart-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2000;
+    display: flex;
+    justify-content: flex-end;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.cart-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cart-content {
+    width: 100%;
+    max-width: 450px;
+    background-color: #1a1a1a; /* Fundo do carrinho cinza escuro */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.4s ease;
+}
+
+.cart-header, .cart-footer {
+    flex-shrink: 0; /* Impede que o header e o footer encolham */
+}
+
+.cart-modal.active .cart-content {
+    transform: translateX(0);
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cart-header h2 {
+    font-family: 'Japan Rich', sans-serif;
+    font-size: 1.8rem;
+}
+
+.close-cart-btn {
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+/* Garante que as etapas do carrinho ocupem o espaço corretamente */
+#cart-step-1, #cart-step-2 {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Faz a etapa ocupar o espaço restante */
+    overflow-y: auto; /* Adiciona a rolagem à própria etapa */
+}
+.cart-items, .checkout-form {
+    padding: 20px;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cart-item-info {
+    flex-grow: 1;
+}
+
+.cart-item-info h4 { font-size: 1.1rem; margin-bottom: 5px; }
+.cart-item-info p { font-size: 0.9rem; color: #aaa; margin-bottom: 8px; }
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    grid-column: 1 / 2;
+}
+
+.quantity-btn {
+    background-color: var(--border-color);
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.item-quantity {
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+.remove-item-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    align-self: center;
+}
+
+.cart-item .price { 
+    font-weight: bold; 
+    grid-column: 1 / 2;
+    justify-self: end;
+    align-self: center;
+}
+
+.cart-footer #order-notes {
+    width: 100%;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.cart-footer {
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.cart-total {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.checkout-btn {
+    width: 100%;
+    text-align: center;
+}
+
+.back-to-cart-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.checkout-form h3 {
+    font-family: 'Japan Rich', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-options label {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.payment-options-nested {
+    display: flex;
+    gap: 10px;
+    padding-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.payment-options-nested input[type="radio"] {
+    display: none; /* Esconde o botão de rádio padrão */
+}
+
+.payment-options-nested label {
+    flex-grow: 1;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0;
+}
+
+.payment-options-nested input[type="radio"]:checked + label {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border-color: var(--primary-color);
+}
+
+#change-display {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+/* About Section */
+.about-section {
+    padding: 80px 0;
+    background-color: var(--bg-color); /* Fundo da seção "Sobre" agora é preto */
+    position: relative; overflow: hidden;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+}
+
+.about-image {
+    flex: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Gallery Section */
+.gallery-section {
+    padding: 80px 0;
+    background-color: var(--bg-color); /* Fundo da seção de galeria agora é preto */
+    position: relative; overflow: hidden;
+}
+
+.gallery-carousel-wrapper {
+    position: relative;
+    height: 550px; /* Altura do carrossel ajustada */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery-fan-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    perspective: 1000px; /* Cria o efeito 3D */
+}
+
+.gallery-item {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 350px; /* Largura do item central */
+    height: 490px; /* Altura do item central */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                filter 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                z-index 0s 0.3s;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    /* Otimização de performance: avisa o navegador que essas propriedades vão mudar */
+    will-change: transform, opacity, filter;
+}
+
+.gallery-item.active {
+    transform: translate(-50%, -50%) translateY(-10px) scale(1); /* Leve elevação */
+    opacity: 1;
+    z-index: 10;
+    filter: blur(0px);
+}
+
+.gallery-item.prev, .gallery-item.next {
+    opacity: 0.6; /* Menos opaco para mais foco no centro */
+    z-index: 8;
+    filter: blur(2px); /* Adiciona desfoque aos itens laterais */
+}
+
+.gallery-item.prev {
+    transform: translate(-50%, -50%) translateX(-210px) rotateY(45deg) scale(0.8) translateY(10px);
+}
+
+.gallery-item.next {
+    transform: translate(-50%, -50%) translateX(210px) rotateY(-45deg) scale(0.8) translateY(10px);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    user-select: none; /* Impede a seleção da imagem */
+    -webkit-user-drag: none; /* Impede o arrasto no Chrome/Safari */
+    pointer-events: none; /* Impede que a imagem capture eventos do mouse */
+}
+
+.gallery-carousel-wrapper .carousel-btn {
+    z-index: 20;
+    display: flex; /* Alterado de block para flex */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Esconde os botões da galeria, pois a navegação será por swipe/drag */
+#gallery-prev, #gallery-next, #highlights-prev, #highlights-next {
+    display: none !important;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 80px 0;
+    background-color: var(--bg-color); /* Fundo da seção de contato agora é preto */
+    position: relative; overflow: hidden;
+}
+
+.contact-content {
+    display: flex;
+    gap: 50px;
+    justify-content: center; /* Centraliza o conteúdo */
+    align-items: center;
+}
+
+.contact-info, .contact-form {
+    flex: 1;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.info-item i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-right: 15px;
+}
+
+.social-media {
+    margin-top: 30px;
+}
+
+.social-media a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.social-media a:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-5px);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+/* Imagens do Naruto Espalhadas */
+.naruto-scattered {
+    position: absolute;
+    width: 200px;
+    height: auto;
+    opacity: 0.3;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.naruto-1 {
+    top: 5%;
+    right: -50px;
+    transform: rotate(15deg);
+}
+
+.naruto-2 {
+    bottom: 5%;
+    left: -60px;
+    transform: rotate(-20deg);
+}
+
+.naruto-3 {
+    top: 15%;
+    right: -45px;
+    transform: rotate(-15deg);
+}
+
+.naruto-4 {
+    bottom: 10%;
+    right: -40px;
+    transform: rotate(-10deg) scaleX(-1); /* Invertido horizontalmente */
+}
+
+/* Footer */
+.naruto-5 {
+    top: 100px;
+    left: -50px;
+    transform: rotate(20deg) scaleX(-1);
+}
+
+footer {
+    background-color: var(--accent-color);
+    color: var(--light-color);
+    padding: 50px 0 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-logo h2 {
+    font-size: 1.8rem;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.footer-logo span {
+    color: var(--light-color);
+}
+
+.footer-links h3,
+.footer-hours h3,
+.footer-contact h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a:hover {
+    font-family: 'Japan Rich', sans-serif;
+    color: var(--secondary-color);
+}
+
+.footer-contact p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-contact i {
+    color: var(--secondary-color);
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.footer-social {
+    margin-top: 20px;
+}
+
+.footer-social a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-color: var(--light-color);
+    color: var(--accent-color);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 35px;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+}
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animação de flutuação */
+@keyframes floatAnimation {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(-5px, -15px); /* Move para a esquerda e para cima */
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* Animação de flutuação para a imagem de cima */
+@keyframes floatAnimationTop {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(5px, 10px); /* Move para a direita e para baixo */
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* Animação de flutuação para a imagem mais acima */
+@keyframes floatAnimationTopmost {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(-10px, 5px); /* Move para a esquerda e para baixo */
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* Animação de flutuação para a quarta imagem */
+@keyframes floatAnimationFourth {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(8px, -8px); /* Move para a direita e para cima */
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+/* Responsividade */
+@media (max-width: 992px) {
+    nav ul li {
+        margin-left: 20px;
+    }
+
+    .about-content,
+    .contact-content {
+        flex-direction: column;
+    }
+    
+    .about-image {
+        order: -1;
+        margin-bottom: 30px;
+    }
+
+    .carousel-btn.prev {
+        left: -10px;
+    }
+    .carousel-btn.next {
+        right: -10px;
+    }
+
+    .gallery-item.prev { transform: translate(-50%, -50%) translateX(-160px) rotateY(45deg) scale(0.7); }
+    .gallery-item.next { transform: translate(-50%, -50%) translateX(160px) rotateY(-45deg) scale(0.7); }
+    .gallery-item { width: 260px; height: 370px; }
+    .gallery-carousel-wrapper { height: 420px; }
+}
+
+@media (max-width: 768px) {
+    nav {
+        display: none; /* Esconde por padrão */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 1050;
+    }
+
+    nav.active {
+        display: flex; /* Mostra quando ativo */
+    }
+
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul li {
+        margin: 20px 0;
+    }
+
+    nav ul li a {
+        font-size: 1.5rem;
+    }
+    
+    .mobile-menu {
+        display: block;
+    }
+
+    .naruto-scattered {
+        width: 120px; /* Reduz o tamanho para telas menores */
+    }
+
+    .naruto-1 {
+        right: -30px;
+    }
+
+    .naruto-3 {
+        right: -35px;
+    }
+
+    .naruto-2 {
+        left: -40px;
+    }
+
+    .naruto-4 {
+        right: -25px;
+    }
+
+    .cart-icon {
+        margin-left: 15px;
+    }
+
+    .naruto-5 {
+        display: none; /* Esconde a do footer em telas mobile para não sobrepor o conteúdo */
+    }
+
+    .logo h1 {
+        font-size: 1.5rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .category {
+        margin-bottom: 10px;
+    }
+    
+    .footer-content > div {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .hero {
+        height: 80vh;
+    }
+
+    .gallery-item.prev { transform: translate(-50%, -50%) translateX(-90px) rotateY(35deg) scale(0.6); }
+    .gallery-item.next { transform: translate(-50%, -50%) translateX(90px) rotateY(-35deg) scale(0.6); }
+    .gallery-item { width: 200px; height: 280px; }
+    .gallery-carousel-wrapper { height: 300px; }
+    .gallery-carousel-wrapper .carousel-btn { background-color: rgba(0,0,0,0.3); color: white; }
+}
+
+@media (max-width: 576px) {
+    .logo h1 {
+        font-size: 1.3rem;
+    }
+    .logo span {
+        font-size: 1rem;
+    }
+
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .menu-items,
+    .menu-category.active {
+        grid-template-columns: 1fr;
+    }    
+
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    .carousel-btn.prev { left: 0; }
+    .carousel-btn.next { right: 0; }
+}
+
+/* Botão Voltar ao Topo */
+#back-to-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+}
+
+#back-to-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* --- Tela de Carregamento --- */
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(66, 0, 0); /* Overlay de carregamento agora é preto */
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    color: var(--light-color); /* Cor do texto "Carregando..." para branco */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#loading-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 8px solid rgba(255, 255, 255, 0.2); /* Borda do spinner mais clara */
+    border-top-color: var(--light-color); /* Cor da parte que gira continua branca */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

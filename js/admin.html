@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Seiko Sushi Bar</title>
+    <link rel="icon" href="../images/lose_sf.png" type="image/png">
+    <!-- Adiciona o novo arquivo de estilo específico para o admin -->
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+    <div id="login-overlay" class="login-overlay">
+        <div class="login-box">
+            <h2>Acesso Restrito</h2>
+            <p>Digite a senha para acessar o painel.</p>
+            <div class="form-group">
+                <input type="password" id="password-input" placeholder="Senha">
+            </div>
+            <button id="login-btn" class="btn">Entrar</button>
+        </div>
+    </div>
+
+    <div class="admin-container" id="admin-panel" style="display: none;">
+        <div class="logo">
+            <img src="../images/lose_sf.png" alt="Logo" width="45" height="45">
+            <h1>Painel de Edição <span>SEIKO SUSHI BAR</span></h1>
+        </div>
+        <p>Edite os itens do cardápio abaixo. Ao finalizar, clique em "Gerar Código do Cardápio" no final da página.</p>
+        
+        <div id="menu-editor"></div>
+
+        <div id="output-container">
+            <button id="generate-code-btn" class="btn btn-save">Gerar Código do Cardápio</button>
+            <h3>Código Gerado:</h3>
+            <p>Copie o código abaixo e cole no arquivo <strong>js/menuData.js</strong>, substituindo todo o conteúdo existente.</p>
+            <textarea id="output-code" readonly></textarea>
+        </div>
+    </div>
+
+    <script src="menuData.js"></script>
+    <script src="admin.js"></script>
+
+</body>
+</html>
