@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seiko - Sushi Bar</title>
+    <link rel="icon" href="images/lose_sf.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/lose_sf.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos para o Modal de Aviso */
+        .custom-alert-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0s 0.3s;
+        }
+
+        .custom-alert-overlay.show {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.3s ease;
+        }
+
+        .custom-alert-box {
+            background: #1c1c1c;
+            color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #c41a21;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+            text-align: center;
+            max-width: 90%;
+            width: 400px;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .custom-alert-overlay.show .custom-alert-box {
+            transform: scale(1);
+        }
+
+        .custom-alert-box h3 { color: #c41a21; font-size: 1.5rem; margin-bottom: 15px; }
+        .custom-alert-box p { margin-bottom: 25px; line-height: 1.6; }
+        .custom-alert-buttons { display: flex; justify-content: center; gap: 15px; }
+        .custom-alert-buttons .btn { min-width: 120px; }
+        .custom-alert-buttons .btn-secondary { background: #555; }
+        .custom-alert-buttons .btn-secondary:hover { background: #777; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/lose_sf.png" alt="Logo do perfil" width="45" height="45">
+                <h1>SEIKO <span>SUSHI BAR</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="#buffet">Buffet do Dia</a></li>
+                    <li><a href="#about">Sobre Nós</a></li>
+                    <li><a href="#gallery">Galeria</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="cart-icon" id="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-counter" id="cart-counter">0</span>
+            </div>
+        </div>
+    </header>
+
+
+    <section id="home" class="hero">
+        <div class="hero-image-overlay"></div>
+        <div class="hero-image-overlay-top"></div>
+        <div class="hero-image-overlay-topmost"></div>
+        <div class="hero-image-overlay-fourth"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h2>Seiko Sushi Bar</h2>
+                <p>Uma experiência gastronômica única que une o sabor e a arte da culinária japonesa</p>
+                <a href="#menu" class="btn">Ver Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="buffet" class="menu-section home-highlights">
+        <div class="container">
+            <h2 class="section-title">Buffet do Dia</h2>
+            <div class="menu-items">
+                <!-- Itens do buffet serão adicionados aqui -->
+            </div>
+            <div class="menu-full-btn">
+                <a href="https://wa.me/5599981331304?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20Buffet%20do%20Dia%21" class="btn" target="_blank">Ver Buffet do Dia</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="menu-section home-highlights">
+        <div class="container">
+            <img src="images/naruto.png" alt="" class="naruto-scattered naruto-1" loading="lazy" />
+            <h2 class="section-title">Destaques do Menu</h2>
+            <div class="menu-items">
+                <!-- Amostra do menu -->
+                    <div class="menu-item">
+                        <div class="item-image">
+                            <img src="./images/destque_menu/Dragonroll.jpg" alt="Dragon Roll" loading="lazy" width="300" height="200">
+                        </div>
+                        <div class="item-info">
+                            <h3>Dragon Roll</h3>
+                            <p>Camarão empanado, abacate e pepino coberto com fatias de anguia e abacate</p>
+                            <div class="item-footer">
+                                <span class="price">R$ 45,00</span>
+                                <button class="add-to-cart-btn">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-image">
+                            <img src="./images/destque_menu/SzechuanRoll.jpg" alt="Szechking Duck Roll" loading="lazy" width="300" height="200">
+                        </div>
+                        <div class="item-info">
+                            <h3>Szechuan Roll</h3>
+                            <p>Atum picante, pepino e cebolinha com molho szechuan</p>
+                            <div class="item-footer">
+                                <span class="price">R$ 42,00</span>
+                                <button class="add-to-cart-btn">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-image">
+                            <img src="./images/destque_menu/hargow.jpg" alt="Har Gow" loading="lazy" width="300" height="200">
+                        </div>
+                        <div class="item-info">
+                            <h3>Har Gow</h3>
+                            <p>Tradicional dim sum de camarão envolto em massa de arroz translúcida</p>
+                            <div class="item-footer">
+                                <span class="price">R$ 32,00</span>
+                                <button class="add-to-cart-btn">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="menu-full-btn">
+                <a href="menu.html" class="btn" id="view-full-menu-btn">Ver Cardápio Completo</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <img src="images/naruto.png" alt="" class="naruto-scattered naruto-2" loading="lazy" />
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Nossa História</h2>
+                    <p>O Seiko Sushi Bar nasceu da paixão de seus chefs pela culinária tradicional japonesa. Após anos de estudo, eles criaram um conceito único que combina técnicas milenares com a precisão e delicadeza do sushi.</p>
+                    <p>Nossos ingredientes são cuidadosamente selecionados, priorizando produtos frescos e de alta qualidade. Cada prato é preparado com atenção aos detalhes, respeitando as tradições culinárias e adicionando toques inovadores.</p>
+                </div>
+                <div class="about-image">
+                    <img src="images/galery/seiko.png" alt="Interior do restaurante Seiko" loading="lazy" width="500" height="500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <img src="images/naruto.png" alt="" class="naruto-scattered naruto-3" loading="lazy" />
+            <h2 class="section-title">Galeria</h2>
+            <div class="gallery-carousel-wrapper">
+                <div class="gallery-fan-carousel">
+                    <div class="gallery-item">
+                        <img src="./images/galery/1.png" alt="Sushi Especial" loading="lazy" width="350" height="490">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/galery/2.png" alt="Ambiente do Restaurante" loading="lazy" width="350" height="490">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/galery/3.png" alt="Preparo do Sushi" loading="lazy" width="350" height="490">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/galery/4.png" alt="Dim Sum" loading="lazy" width="350" height="490">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/galery/5.png" alt="Pratos Especiais" loading="lazy" width="350" height="490">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/galery/6.png" alt="Decoração Japonesa" loading="lazy" width="350" height="490">
+                    </div>
+                </div>
+                <button class="carousel-btn prev" id="gallery-prev" aria-label="Anterior">&#10094;</button>
+                <button class="carousel-btn next" id="gallery-next" aria-label="Próximo">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal do Carrinho -->
+    <section class="cart-modal" id="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2 id="cart-title">Seu Pedido</h2>
+                <button class="close-cart-btn" id="close-cart-btn">&times;</button>
+            </div>
+
+            <!-- Etapa 1: Revisão do Pedido -->
+            <div id="cart-step-1">
+                <div class="cart-items" id="cart-items">
+                    <!-- Itens do carrinho serão adicionados aqui -->
+                </div>
+                <div class="cart-footer">
+                    <div class="form-group">
+                        <textarea id="order-notes" placeholder="Observações (ex: sem cebola, ponto da carne, etc.)"></textarea>
+                    </div>
+                    <div class="cart-total">Total: <span id="cart-total">R$ 0,00</span></div>
+                    <button class="btn checkout-btn" id="go-to-step-2-btn">Continuar</button>
+                </div>
+            </div>
+
+            <!-- Etapa 2: Dados do Cliente e Pagamento -->
+            <div id="cart-step-2" style="display: none;">
+                <div class="checkout-form">
+                    <button class="back-to-cart-btn" id="back-to-step-1-btn">&larr; Voltar para o carrinho</button>
+                    <h3>Tipo de Entrega</h3>
+                    <div class="payment-options">
+                        <label><input type="radio" name="delivery-type" value="Delivery" checked> Delivery</label>
+                        <label><input type="radio" name="delivery-type" value="Retirada no local"> Retirada no local</label>
+                    </div>
+                    <h3>Suas Informações</h3>
+                    <div class="form-group">
+                        <input type="text" id="client-name" placeholder="Seu nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="client-phone" placeholder="Telefone / WhatsApp" required>
+                    </div>
+                    <div id="delivery-info-container">
+                        <h3>Endereço para Entrega</h3>
+                        <div class="form-group">
+                            <input type="text" id="client-address" placeholder="Rua e Número" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="client-neighborhood" placeholder="Bairro" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="client-complement" placeholder="Complemento (Apto, Bloco, etc.)">
+                        </div>
+                    </div>
+                    <h3>Forma de Pagamento</h3>
+                    <div class="payment-options">
+                        <label><input type="radio" name="payment" value="Dinheiro" checked> Dinheiro</label>
+                        <label><input type="radio" name="payment" value="Cartão"> Cartão</label>
+                        <div class="form-group" id="card-type-container" style="display: none;">
+                            <div class="payment-options-nested">
+                                <input type="radio" id="card-credit" name="card-type" value="Crédito" checked><label for="card-credit">Crédito</label>
+                                <input type="radio" id="card-debit" name="card-type" value="Débito"><label for="card-debit">Débito</label>
+                            </div>
+                        </div>
+                        <label><input type="radio" name="payment" value="Pix"> Pix</label>
+                    </div>
+                    <div class="form-group" id="change-for-container">
+                        <input type="text" id="change-for" placeholder="Troco para quanto? (Opcional)">
+                        <p id="change-display" style="display: none;"></p>
+                    </div>
+                </div>
+                <div class="cart-footer">
+                    <div class="cart-summary-line" id="cart-delivery-fee" style="display: none;">
+                        <span>Taxa de Entrega:</span>
+                        <span>R$ 5,00</span>
+                    </div>
+                    <div class="cart-total">Total: <span id="cart-total-step2">R$ 0,00</span></div>
+                    <button class="btn checkout-btn" id="checkout-btn">Finalizar Pedido via WhatsApp</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <img src="images/naruto.png" alt="" class="naruto-scattered naruto-5" loading="lazy" />
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>SEIKO <span>Sushi Bar</span></h2>
+                    <p>Autêntico Sushi com Tradição Chinesa</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="#buffet">Buffet do Dia</a></li>
+                        <li><a href="#about">Sobre Nós</a></li>
+                        <li><a href="#gallery">Galeria</a></li>
+                    </ul>
+                </div>
+                <div class="footer-hours">
+                    <h3>Horário de Funcionamento</h3>
+                    <p>Terça a Sexta: 12h às 15h | 18h às 23h</p>
+                    <p>Sábado e Domingo: 12h às 23h</p>
+                    <p>Segunda: Fechado</p>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contato e Localização</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. José Vieira de Melo, Lago da Pedra - MA</p>
+                    <p><i class="fas fa-phone"></i> (99) 98133-1304</p>
+                    <p><i class="fas fa-envelope"></i> seikosushibarlp@gmail.com</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/seusushi" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/5599981331304" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Seiko Sushi Bar. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Aviso Personalizado -->
+    <div id="custom-alert-modal" class="custom-alert-overlay">
+        <div class="custom-alert-box">
+            <h3>Atenção</h3>
+            <p>Olá! Gostaríamos de informar que os pedidos à la carte (fora do buffet) são para um mínimo de 6 peças. Agradecemos a compreensão!</p>
+            <div class="custom-alert-buttons">
+                <button id="custom-alert-cancel" class="btn btn-secondary">Voltar</button>
+                <button id="custom-alert-confirm" class="btn">Continuar</button>
+            </div>
+        </div>
+    </div>
+
+    <button id="back-to-top-btn" title="Voltar ao topo"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Tela de Carregamento -->
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+        <p>Carregando cardápio...</p>
+    </div>
+    <script src="js/script.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio - Seiko Sushi Bar</title>
+    <link rel="icon" href="images/lose_sf.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/lose_sf.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/lose_sf.png" alt="Logo do perfil" width="45" height="45">
+                <h1>SEIKO <span>SUSHI BAR</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#home">Início</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="index.html#buffet">Buffet do Dia</a></li>
+                    <li><a href="index.html#about">Sobre Nós</a></li>
+                    <li><a href="index.html#gallery">Galeria</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="cart-icon" id="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-counter" id="cart-counter">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section id="menu" class="menu-section">
+            <div class="container">
+                <h2 class="section-title">Nosso Cardápio</h2>
+                <div class="menu-carousel-wrapper">
+                    <button class="carousel-btn prev" id="carousel-prev" aria-label="Anterior">&#10094;</button>
+                    <div class="menu-categories">
+                        <!-- Categorias serão preenchidas pelo JavaScript -->
+                    </div>
+                    <button class="carousel-btn next" id="carousel-next" aria-label="Próximo">&#10095;</button>
+                </div>
+                <div class="menu-items">
+                    <!-- Itens do menu serão preenchidos pelo JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal do Carrinho -->
+        <section class="cart-modal" id="cart-modal">
+            <div class="cart-content">
+                <div class="cart-header">
+                    <h2 id="cart-title">Seu Pedido</h2>
+                    <button class="close-cart-btn" id="close-cart-btn">&times;</button>
+                </div>
+
+                <!-- Etapa 1: Revisão do Pedido -->
+                <div id="cart-step-1">
+                    <div class="cart-items" id="cart-items">
+                        <!-- Itens do carrinho serão adicionados aqui -->
+                    </div>
+                    <div class="cart-footer">
+                        <div class="form-group">
+                            <textarea id="order-notes" placeholder="Observações (ex: sem cebola, ponto da carne, etc.)"></textarea>
+                        </div>
+                        <div class="cart-total">Total: <span id="cart-total">R$ 0,00</span></div>
+                        <button class="btn checkout-btn" id="go-to-step-2-btn">Continuar</button>
+                    </div>
+                </div>
+
+                <!-- Etapa 2: Dados do Cliente e Pagamento -->
+                <div id="cart-step-2" style="display: none;">
+                    <div class="checkout-form">
+                        <button class="back-to-cart-btn" id="back-to-step-1-btn">&larr; Voltar para o carrinho</button>
+                        <h3>Tipo de Entrega</h3>
+                        <div class="payment-options">
+                            <label><input type="radio" name="delivery-type" value="Delivery" checked> Delivery</label>
+                            <label><input type="radio" name="delivery-type" value="Retirada no local"> Retirada no local</label>
+                        </div>
+                    <h3>Suas Informações</h3>
+                    <div class="form-group">
+                        <input type="text" id="client-name" placeholder="Seu nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="client-phone" placeholder="Telefone / WhatsApp" required>
+                    </div>
+                    <div id="delivery-info-container">
+                        <h3>Endereço para Entrega</h3>
+                            <div class="form-group">
+                                <input type="text" id="client-address" placeholder="Rua e Número" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="client-neighborhood" placeholder="Bairro" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="client-complement" placeholder="Complemento (Apto, Bloco, etc.)">
+                            </div>
+                        </div>
+                        <h3>Forma de Pagamento</h3>
+                        <div class="payment-options">
+                            <label><input type="radio" name="payment" value="Dinheiro" checked> Dinheiro</label>
+                            <label><input type="radio" name="payment" value="Cartão"> Cartão</label>
+                            <div class="form-group" id="card-type-container" style="display: none;">
+                                <div class="payment-options-nested">
+                                    <input type="radio" id="card-credit" name="card-type" value="Crédito" checked><label for="card-credit">Crédito</label>
+                                    <input type="radio" id="card-debit" name="card-type" value="Débito"><label for="card-debit">Débito</label>
+                                </div>
+                            </div>
+                            <label><input type="radio" name="payment" value="Pix"> Pix</label>
+                        </div>
+                        <div class="form-group" id="change-for-container">
+                            <input type="text" id="change-for" placeholder="Troco para quanto? (Opcional)">
+                            <p id="change-display" style="display: none;"></p>
+                        </div>
+                    </div>
+                    <div class="cart-footer">
+                        <div class="cart-summary-line" id="cart-delivery-fee" style="display: none;">
+                            <span>Taxa de Entrega:</span>
+                            <span>R$ 5,00</span>
+                        </div>
+                        <div class="cart-total">Total: <span id="cart-total-step2">R$ 0,00</span></div>
+                        <button class="btn checkout-btn" id="checkout-btn">Finalizar Pedido via WhatsApp</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2><span>Seiko Sushi Bar</span></h2>
+                    <p>Tradição Japonesa em Cada Detalhe</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html#home">Início</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="index.html#buffet">Buffet do Dia</a></li>
+                        <li><a href="index.html#about">Sobre Nós</a></li>
+                        <li><a href="index.html#gallery">Galeria</a></li>
+                    </ul>
+                </div>
+                <div class="footer-hours">
+                    <h3>Horário de Funcionamento</h3>
+                    <p>Terça a Sexta: 12h às 15h | 18h às 23h</p>
+                    <p>Sábado e Domingo: 12h às 23h</p>
+                    <p>Segunda: Fechado</p>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contato e Localização</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. José Vieira de Melo, Lago da Pedra - MA</p>
+                    <p><i class="fas fa-phone"></i> (99) 98133-1304</p>
+                    <p><i class="fas fa-envelope"></i> seikosushibarlp@gmail.com</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/seikosushibar_lp/" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/5599981331304" aria-label="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Seiko Sushi Bar. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top-btn" title="Voltar ao topo"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="js/menuData.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+</html>
